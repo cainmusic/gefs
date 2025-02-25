@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            #app {
+                height: 400px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <v-chart :option="option" autoresize />
+        </div>
+        <script src="/fs/static/public/vue@3.4.33.js"></script>
+        <script src="/fs/static/public/echarts@5.5.1.js"></script>
+        <script src="/fs/static/public/vue-echarts@latest.js"></script>
+        <script src="/fs/static/public/data.js"></script>
+        <script>
+            Vue.createApp({
+                mounted() {
+                    this.getData();
+                },
+                data() {
+                    return {
+                        option: {},
+                    };
+                },
+                methods: {
+                    getData() {
+                        this.option = data.option;
+                    },
+                },
+            })
+                .component('v-chart', VueECharts)
+                .mount('#app');
+        </script>
+    </body>
+</html>
